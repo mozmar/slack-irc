@@ -1,0 +1,13 @@
+{
+  "nickname": "ee-slack",
+  "server": "irc.mozilla.org",
+  "token": "",
+  "disable_irc_to_slack": true,
+  "channelMapping": {
+    "#alerts": "#ee-infra"
+  },
+  "ircOptions": {
+    "secure": true,
+    "port": 6697
+  }
+}
