@@ -4,7 +4,7 @@
   "token": "",
   "disable_irc_to_slack": true,
   "channelMapping": {
-    "#alerts": "#ee-infra"
+    "#ee-alerts": "#ee-infra"
   },
   "ircOptions": {
     "secure": true,
