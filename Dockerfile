@@ -1,11 +1,15 @@
 FROM node:5
 
+RUN adduser --uid 1000 --disabled-password --gecos '' --no-create-home webdev
 WORKDIR /app
+CMD ["node", "ee-index.js"]
 
-COPY package.json /app/package.json
+COPY package.json ./
 RUN npm install
 
-COPY . /app
+COPY . ./
 RUN npm run build
 
-CMD node ee-index.js
+# Change User
+RUN chown webdev.webdev -R .
+USER webdev
