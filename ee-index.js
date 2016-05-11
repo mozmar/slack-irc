@@ -1,7 +1,7 @@
 var createBots = require('./dist/helpers').createBots;
 var config = require('./config.json');
 
-var slackToken = process.env.SLACK_TOKEN;
-config.token = slackToken;
+config.token = process.env.SLACK_TOKEN;
+config.loglevel = process.env.LOG_LEVEL || 'info';
 
 createBots(config);
