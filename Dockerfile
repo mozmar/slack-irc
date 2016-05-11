@@ -1,4 +1,4 @@
-FROM node:5
+FROM node:6
 
 RUN adduser --uid 1000 --disabled-password --gecos '' --no-create-home webdev
 WORKDIR /app
