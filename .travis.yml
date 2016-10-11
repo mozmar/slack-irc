@@ -1,4 +1,31 @@
-language: node_js
-node_js:
-  - '4'
-  - '6'
+services: docker
+env:
+  global:
+    - DOCKER_REGISTRY=registry.heroku.com
+    - HEROKU_APP=mozmar-slack-irc
+    - HEROKU_PROC_TYPE=worker
+    - DOCKER_IMG_TAG=mozmar_slack_irc
+    - DOCKER_CACHE_FILE=/home/travis/docker/cache.tar.gz
+cache:
+  directories:
+    - /home/travis/docker/
+before_install:
+  - docker -v
+  - bin/docker-cache.sh load
+install: docker build -t "$DOCKER_IMG_TAG" --pull=true .
+script:
+  - docker run "$DOCKER_IMG_TAG" npm run lint
+  - bin/docker-cache.sh save
+deploy:
+  - provider: script
+    script: bin/deploy.sh
+    on:
+      branch: master
+      repo: mozmar/slack-irc
+notifications:
+  email: false
+  irc:
+    channels:
+      - "irc.mozilla.org#ee-infra"
+    on_success: change
+    on_failure: always
