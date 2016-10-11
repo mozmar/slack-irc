@@ -1,0 +1,30 @@
+machine:
+  services:
+    - docker
+  environment:
+    DOCKER_REGISTRY: registry.heroku.com
+    HEROKU_APP: mozmar-slack-irc
+    HEROKU_PROC_TYPE: web
+    DOCKER_IMG_TAG: mozmar_slack_irc
+    DOCKER_CACHE_FILE: ~/docker/image.tgz
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - docker --version
+    - docker info
+    - bin/docker-cache.sh load
+    - docker build -t "$DOCKER_IMAGE_TAG" --pull=true .
+    - bin/docker-cache.sh save
+
+test:
+  override:
+    - docker run "$DOCKER_IMG_TAG" npm run lint
+
+deployment:
+  heroku:
+    branch: master
+    owner: mozmar
+    commands:
+      - bin/deploy.sh

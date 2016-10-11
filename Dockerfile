@@ -3,6 +3,7 @@ FROM node:6
 RUN adduser --uid 1000 --disabled-password --gecos '' --no-create-home webdev
 WORKDIR /app
 CMD ["node", "ee-index.js"]
+ENV PATH=/app/node_modules/.bin:$PATH
 
 COPY package.json ./
 RUN npm install
