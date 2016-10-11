@@ -6,7 +6,7 @@ machine:
     HEROKU_APP: mozmar-slack-irc
     HEROKU_PROC_TYPE: worker
     DOCKER_IMG_TAG: mozmar_slack_irc
-    DOCKER_CACHE_FILE: ~/docker/image.tgz
+    DOCKER_CACHE_FILE: /home/ubuntu/docker/image.tgz
 
 dependencies:
   cache_directories:
