@@ -15,7 +15,7 @@ dependencies:
     - docker --version
     - docker info
     - bin/docker-cache.sh load
-    - docker build -t "$DOCKER_IMAGE_TAG" --pull=true .
+    - docker build -t "$DOCKER_IMG_TAG" --pull=true .
     - bin/docker-cache.sh save
 
 test:
