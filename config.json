@@ -1,10 +1,10 @@
 {
-  "nickname": "ee-slack",
+  "nickname": "meao-slack",
   "server": "irc.mozilla.org",
   "token": "",
   "disable_irc_to_slack": true,
   "channelMapping": {
-    "#ee-alerts": "#ee-infra"
+    "#meao-alerts": "#ee-infra"
   },
   "ircOptions": {
     "secure": true,
