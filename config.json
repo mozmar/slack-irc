@@ -4,7 +4,7 @@
   "token": "",
   "disable_irc_to_slack": true,
   "channelMapping": {
-    "#meao-alerts": "#ee-infra"
+    "#meao-alerts": "#meao-infra"
   },
   "ircOptions": {
     "secure": true,
